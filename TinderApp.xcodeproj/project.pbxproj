@@ -6,13 +6,8 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		749868372E29519800F24ABF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749868362E29519800F24ABF /* HomeViewController.swift */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXFileReference section */
 		749868152E2945F500F24ABF /* TinderApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinderApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		749868362E29519800F24ABF /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -50,7 +45,6 @@
 		7498680C2E2945F500F24ABF = {
 			isa = PBXGroup;
 			children = (
-				749868362E29519800F24ABF /* HomeViewController.swift */,
 				749868172E2945F500F24ABF /* TinderApp */,
 				749868162E2945F500F24ABF /* Products */,
 			);
@@ -138,7 +132,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				749868372E29519800F24ABF /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
