@@ -9,6 +9,12 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
+    private let isEmptyCardsLabel: UILabel = {
+        let label = UILabel()
+        label.text = "No momentos não encontramos ninguem proximo de você."
+        return label
+    }()
+    
     private var users: [User] = [
         User(id: 1, name: "Lucas", age: 27, bio: "Gamer e dev apaixonado por tecnologia.", imageName: "lucas"),
         User(id: 2, name: "Maria", age: 25, bio: "Amo viajar, café e boas conversas.", imageName: "maria"),
@@ -53,6 +59,9 @@ class HomeViewController: UIViewController {
             likeButton.widthAnchor.constraint(equalToConstant: 60),
             likeButton.heightAnchor.constraint(equalToConstant: 60),
         ])
+        
+        dislikeButton.addTarget(self, action: #selector(handleDislike), for: .touchUpInside)
+        likeButton.addTarget(self, action: #selector(handleLike), for: .touchUpInside)
     }
     
     private func layoutCards() {
@@ -67,11 +76,28 @@ class HomeViewController: UIViewController {
                 card.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
                 card.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100)
             ])
-
             // Cards mais antigos ficam atrás
             view.sendSubviewToBack(card)
         }
     }
     
+    @objc private func handleLike() {
+        animateTopCard(toRight: true)
+    }
     
+    @objc private func handleDislike() {
+        animateTopCard(toRight: false)
+    }
+    
+    private func animateTopCard(toRight: Bool) {
+        guard let topCard = view.subviews.last(where: { $0 is CardView}) as? CardView else { return }
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            let offSetX: CGFloat = toRight ? 500 : -500
+            topCard.center.x += offSetX
+            topCard.alpha = 0
+        }) { _ in
+            topCard.removeFromSuperview()
+        }
+    }
 }
